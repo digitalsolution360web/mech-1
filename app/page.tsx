@@ -13,11 +13,11 @@ const categories = [
 ];
 
 const products = [
-  { name: "MBC37SC", image: "/mb.webp", badge: "SUMMERSALE", discount: "57%", price: "11,000", strike: "25,500", save: "14,500" },
-  { name: "MBC37SBC", image: "/mbc.webp", badge: "BEST SELLER", discount: "57%", price: "12,000", strike: "27,600", save: "15,600" },
-  { name: "Chainsaw MCS58A-22SN", image: "/chain.webp", discount: "61%", price: "10,500", strike: "26,700", save: "16,200" },
-  { name: "Gasoline Engine ME30A", image: "/gaso.webp", discount: "20%", price: "9,000", strike: "11,200", save: "2,200" },
-  { name: "Power Weeder MT900GA-208CC", image: "/power.webp", discount: "54%", price: "31,000", strike: "68,000", save: "37,000" },
+  { id: 2, name: "MBC37SC", image: "/mb.webp", badge: "SUMMERSALE", discount: "57%", price: "11,000", strike: "25,500", save: "14,500" },
+  { id: 3, name: "MBC37SBC", image: "/mbc.webp", badge: "BEST SELLER", discount: "57%", price: "12,000", strike: "27,600", save: "15,600" },
+  { id: 4, name: "Chainsaw MCS58A-22SN", image: "/chain.webp", discount: "61%", price: "10,500", strike: "26,700", save: "16,200" },
+  { id: 6, name: "Gasoline Engine ME200A", image: "/gaso.webp", discount: "20%", price: "9,000", strike: "11,200", save: "2,200" },
+  { id: 9, name: "Power Weeder MT900GA-208CC", image: "/power.webp", discount: "54%", price: "31,000", strike: "68,000", save: "37,000" },
 ];
 
 export default function Home() {
@@ -63,7 +63,7 @@ export default function Home() {
       <section className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <h2 className="text-4xl font-extrabold text-gray-900">Featured Products</h2>
-          <Link href="#" className="text-[#236da9] font-bold flex items-center gap-1 hover:underline">
+          <Link href="/products" className="text-[#236da9] font-bold flex items-center gap-1 hover:underline">
             View All
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -73,7 +73,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {products.map((prod) => (
-            <div key={prod.name} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all p-4 flex flex-col relative group">
+            <Link key={prod.id} href={`/products/${prod.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all p-4 flex flex-col relative group cursor-pointer">
               {/* Discount Badge with Zigzag Bottom */}
               <div
                 className="absolute top-0 right-4 bg-[#007bff] text-white text-[10px] sm:text-[11px] font-black px-2.5 pt-3 pb-4 z-10 shadow-md flex flex-col items-center leading-none"
@@ -126,16 +126,16 @@ export default function Home() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-2">
-                    <button className="w-full bg-[#236da9] text-white py-3 rounded-xl font-black text-sm uppercase tracking-wide hover:bg-[#1a5a8f] active:scale-95 transition-all shadow-md shadow-blue-200">
+                    <div className="w-full bg-[#236da9] text-white py-3 rounded-xl font-black text-sm uppercase tracking-wide text-center shadow-md shadow-blue-200">
                       Buy Now
-                    </button>
-                    <button className="w-full border-2 border-[#236da9] text-[#236da9] py-3 rounded-xl font-black text-sm uppercase tracking-wide hover:bg-blue-50 active:scale-95 transition-all">
+                    </div>
+                    <div className="w-full border-2 border-[#236da9] text-[#236da9] py-3 rounded-xl font-black text-sm uppercase tracking-wide text-center">
                       Add to Cart
-                    </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -531,17 +531,22 @@ export default function Home() {
 
         <div className="max-w-[1700px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {[
-            { name: "amazon", color: "text-gray-900" },
-            { name: "Flipkart", color: "text-blue-600" },
-            { name: "Industrybuying", color: "text-orange-600" },
-            { name: "JioMart", color: "text-red-600" },
-            { name: "moglix", color: "text-red-700" },
-            { name: "TOOLSVILLA", color: "text-green-600" },
+            { name: "amazon", logo: "/amazon.png" },
+            { name: "Flipkart", logo: "/flipkart.png" },
+            { name: "Industrybuying", logo: "/indstybuying.png" },
+            { name: "JioMart", logo: "/jiomart.png" },
+            { name: "moglix", logo: "/moglix.png" },
+            { name: "TOOLSVILLA", logo: "/toolsvila.png" },
           ].map((brand) => (
-            <div key={brand.name} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:shadow-lg group">
-              <span className={`text-2xl font-black ${brand.color} tracking-tighter group-hover:scale-110 transition-transform`}>
-                {brand.name}
-              </span>
+            <div key={brand.name} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-center ">
+              <div className="relative w-full h-12 ">
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           ))}
         </div>

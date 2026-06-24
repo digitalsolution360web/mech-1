@@ -148,9 +148,10 @@ function ProductsContent() {
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filtered.map((prod) => (
-                <div
+                <Link
                   key={prod.id}
-                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col relative group overflow-hidden"
+                  href={`/products/${prod.id}`}
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col relative group overflow-hidden cursor-pointer"
                 >
                   {/* Discount Badge */}
                   <div
@@ -206,15 +207,15 @@ function ProductsContent() {
 
                     {/* Buttons */}
                     <div className="mt-auto space-y-2">
-                      <button className="w-full bg-[#236da9] hover:bg-[#1a5a8f] text-white py-2.5 rounded-xl font-black text-xs uppercase tracking-wide transition-all active:scale-95 shadow-md shadow-blue-100">
+                      <div className="w-full bg-[#236da9] hover:bg-[#1a5a8f] text-white py-2.5 rounded-xl font-black text-xs uppercase tracking-wide transition-all shadow-md shadow-blue-100 flex items-center justify-center">
                         Buy Now
-                      </button>
-                      <button className="w-full border-2 border-[#236da9] text-[#236da9] hover:bg-blue-50 py-2.5 rounded-xl font-black text-xs uppercase tracking-wide transition-all active:scale-95">
+                      </div>
+                      <div className="w-full border-2 border-[#236da9] text-[#236da9] hover:bg-blue-50 py-2.5 rounded-xl font-black text-xs uppercase tracking-wide transition-all flex items-center justify-center">
                         Add to Cart
-                      </button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
