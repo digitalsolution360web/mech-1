@@ -1,5 +1,6 @@
 import HeroSlider from "./components/HeroSlider";
 import GallerySlider from "./components/GallerySlider";
+import FAQ from "./components/FAQ";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -518,6 +519,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
+
       {/* Trusted Marketplaces Section */}
       <section className="py-20 bg-gray-50/100 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1700px] mx-auto text-center mb-16">
