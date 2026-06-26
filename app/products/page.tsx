@@ -183,11 +183,14 @@ function ProductsContent() {
 
                   {/* Content */}
                   <div className="p-4 flex flex-col flex-1">
-                    {/* Stars */}
-                    <div className="flex gap-0.5 mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <i key={i} className={`fa-solid fa-star text-xs ${i < prod.rating ? "text-yellow-400" : "text-gray-200"}`}></i>
-                      ))}
+                    {/* Stars & Numerical Rating */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <i key={i} className={`fa-solid fa-star text-[10px] ${i < prod.rating ? "text-yellow-400" : "text-gray-200"}`}></i>
+                        ))}
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-500">{prod.rating}.0</span>
                     </div>
 
                     <h3 className="font-extrabold text-gray-900 text-sm leading-tight mb-3 line-clamp-2 min-h-[40px]">

@@ -511,14 +511,14 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Thumbnails */}
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-2 mt-4 overflow-x-auto pb-2 scrollbar-hide">
               {product.images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
-                  className={`relative flex-1 aspect-square rounded-xl overflow-hidden border-2 transition-all duration-200 bg-white ${
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-white ${
                     selectedImage === idx
-                      ? "border-[#236da9] shadow-md shadow-blue-100 scale-105"
+                      ? "border-[#236da9] shadow-md scale-105"
                       : "border-gray-200 hover:border-[#236da9]/40"
                   }`}
                 >
@@ -527,19 +527,6 @@ export default function ProductDetailPage() {
               ))}
             </div>
 
-            {/* Buy Bulk CTA */}
-            <div className="mt-4 bg-[#1a5799] rounded-2xl px-6 py-4 flex items-center justify-between">
-              <div>
-                <p className="text-white font-bold text-sm">Want to buy a large quantity?</p>
-                <p className="text-blue-200 text-xs mt-0.5">Get special pricing for bulk orders</p>
-              </div>
-              <Link
-                href="/dealer"
-                className="bg-white text-[#1a5799] text-xs font-black px-4 py-2 rounded-xl hover:bg-blue-50 transition-colors whitespace-nowrap"
-              >
-                Get Bulk Quote
-              </Link>
-            </div>
           </div>
 
           {/* ---- MIDDLE: Product Info ---- */}
@@ -570,14 +557,14 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Rating */}
-            <div className="flex items-center gap-2 mb-5">
+            <div className="flex items-center gap-2 mb-5 bg-gray-50/80 w-fit px-3 py-1.5 rounded-full border border-gray-100">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <i key={i} className={`fa-solid fa-star text-sm ${i < product.rating ? "text-yellow-400" : "text-gray-200"}`}></i>
+                  <i key={i} className={`fa-solid fa-star text-xs ${i < product.rating ? "text-yellow-400" : "text-gray-200"}`}></i>
                 ))}
               </div>
-              <span className="text-sm font-bold text-gray-700">{product.rating}.0</span>
-              <span className="text-sm text-gray-400">({product.reviews.toLocaleString()} reviews)</span>
+              <span className="text-xs font-black text-gray-900">{product.rating}.0/5.0</span>
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-1">({product.reviews.toLocaleString()} reviews)</span>
             </div>
 
             {/* Specs Grid */}
@@ -633,8 +620,8 @@ export default function ProductDetailPage() {
           </div>
 
           {/* ---- RIGHT: Pricing & Purchase ---- */}
-          <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-6">
+          <div className="lg:col-span-3 lg:sticky lg:top-6 self-start">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
 
               {/* Price Block */}
               <div className="mb-5">
@@ -736,13 +723,25 @@ export default function ProductDetailPage() {
                 <p className="text-[10px] font-medium">All transactions are secure and encrypted</p>
               </div>
             </div>
+
+            {/* Buy Bulk CTA */}
+            <div className="mt-4 bg-gradient-to-r from-[#1a5799] to-[#236da9] rounded-2xl px-5 py-4">
+              <p className="text-white font-bold text-sm mb-1">Want to buy a large quantity?</p>
+              <p className="text-blue-200 text-xs mb-3">Get special pricing for bulk orders</p>
+              <Link
+                href="/dealer"
+                className="block w-full text-center bg-white text-[#1a5799] text-xs font-black px-4 py-2.5 rounded-xl hover:bg-blue-50 transition-colors"
+              >
+                Get Bulk Quote
+              </Link>
+            </div>
           </div>
 
         </div>
 
         {/* ---- WHAT'S IN THE BOX ---- */}
         {product.boxItems && product.boxItems.length > 0 && (
-          <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 border-t border-gray-100 pt-10">
+          <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 bg-blue-50/50 rounded-[3rem] border border-blue-100/50 py-12">
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold text-gray-900 tracking-tight">What&apos;s in the box</h2>
               <div className="w-16 h-1 bg-[#236da9] mx-auto mt-3 rounded-full"></div>
@@ -999,9 +998,16 @@ export default function ProductDetailPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {products.slice(0, 5).map((p) => (
-              <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-3xl border border-gray-100 p-4 group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+              <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-3xl border border-gray-100 p-4 group hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative">
+                {/* Discount Badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="bg-[#236da9] text-white text-[9px] font-black px-2 py-1 rounded-lg shadow-lg">
+                    {p.discount} OFF
+                  </span>
+                </div>
+                
                 <div className="aspect-square relative mb-4 bg-gray-50 rounded-2xl overflow-hidden">
                   <Image src={p.image} alt={p.name} fill className="object-contain group-hover:scale-105 transition-transform duration-500" />
                 </div>
