@@ -22,10 +22,10 @@ export default function Navbar() {
   return (
     <header className="w-full flex flex-col sticky top-0 z-50 bg-white shadow-sm">
       {/* Top Banner */}
-      <div className="w-full bg-[#1a5f9e] py-4 text-center overflow-hidden">
-        <p className="text-white text-xs sm:text-sm font-medium tracking-wide flex items-center justify-center gap-2 animate-pulse">
+      <div className="w-full bg-[#1a5f9e] py-2 sm:py-4 text-center overflow-hidden">
+        <p className="text-white text-[11px] sm:text-sm font-medium tracking-wide flex items-center justify-center gap-2 animate-pulse px-2">
           <span>⚡</span>
-          FLASH SALE ALERT: Flat 10% off on Power Weeders
+          <span className="text-center">FLASH SALE ALERT: Flat 10% off on Power Weeders</span>
           <span>⚡</span>
         </p>
       </div>
@@ -33,7 +33,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       <div className=" border-b border-gray-100">
         <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-25">
+          <div className="flex justify-between items-center h-16 sm:h-20 lg:h-25">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="transition-opacity hover:opacity-80">
@@ -42,7 +42,7 @@ export default function Navbar() {
                   alt="Mechnova Logo"
                   width={200}
                   height={50}
-                  className="h-8 sm:h-10 w-auto"
+                  className="h-7 sm:h-9 lg:h-10 w-auto"
                 />
               </Link>
             </div>
@@ -60,7 +60,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 h-25 flex items-center text-base lg:text-[1.1rem] font-bold group transition-colors duration-300 ${link.name === "Home" ? "text-primary" : "text-gray-600 hover:text-primary"
+                  className={`relative px-3 lg:px-4 h-16 sm:h-20 lg:h-25 flex items-center text-sm lg:text-[1rem] xl:text-[1.1rem] font-bold group transition-colors duration-300 ${link.name === "Home" ? "text-primary" : "text-gray-600 hover:text-primary"
                     }`}
                 >
                   <span className="relative py-1">
@@ -76,14 +76,14 @@ export default function Navbar() {
             </nav>
 
             {/* Icons & Actions */}
-            <div className="flex items-center space-x-5">
+            <div className="flex items-center space-x-2 sm:space-x-5">
               <button
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className={`transition-colors p-2 rounded-full ${isSearchOpen ? "bg-gray-100 text-primary" : "text-gray-600 hover:text-primary"}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 cursor-pointer"
+                  className="h-6 w-6 sm:h-8 sm:w-8 cursor-pointer"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -99,7 +99,7 @@ export default function Navbar() {
               <Link href="/cart" className="text-gray-600 hover:text-primary transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
+                  className="h-6 w-6 sm:h-8 sm:w-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -173,14 +173,28 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-100 py-4 px-4 space-y-4 animate-in slide-in-from-top duration-300">
-          <Link href="/" onClick={() => setIsMenuOpen(false)} className="block text-primary font-medium py-2">Home</Link>
-          <Link href="/products" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 font-medium py-2">Products</Link>
-          <Link href="/spare-parts" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 font-medium py-2">Spare Parts</Link>
-          <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 font-medium py-2">About Us</Link>
-          <Link href="/dealer" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 font-medium py-2">Dealer</Link>
-          <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 font-medium py-2">Contact</Link>
-
+        <div className="md:hidden bg-white border-b border-gray-100 py-4 px-4 space-y-1 animate-in slide-in-from-top duration-300 shadow-lg">
+          {[
+            { name: "Home", href: "/", active: true },
+            { name: "Products", href: "/products" },
+            { name: "Spare Parts", href: "/spare-parts" },
+            { name: "About Us", href: "/about-us" },
+            { name: "Dealer", href: "/dealer" },
+            { name: "Contact", href: "/contact" },
+          ].map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-base transition-colors ${
+                link.active
+                  ? "text-primary bg-blue-50"
+                  : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
       )}
     </header>

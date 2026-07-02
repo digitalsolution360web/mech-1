@@ -27,10 +27,10 @@ export default function Home() {
       <HeroSlider />
 
       {/* Categories Section */}
-      <section className="max-w-[1100px] ml-38 px-4 sm:px-6 lg:px-8 py-10">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8 px-2">Categories (6)</h2>
+      <section className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-8 px-2">Categories (6)</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
           {categories.map((cat) => (
             <Link key={cat.name} href="#" className="flex flex-col items-center group">
               <div className="w-full aspect-square  rounded-3xl flex items-center justify-center p-4 border border-gray-50 transition-all duration-300 group-hover:shadow-md group-hover:bg-white overflow-hidden relative">
@@ -63,7 +63,7 @@ export default function Home() {
       {/* Featured Products Section */}
       <section className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-          <h2 className="text-4xl font-extrabold text-gray-900">Featured Products</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">Featured Products</h2>
           <Link href="/products" className="text-[#236da9] font-bold flex items-center gap-1 hover:underline">
             View All
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -149,7 +149,7 @@ export default function Home() {
             <span className="inline-block bg-blue-50 text-[#236da9] text-[11px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6">
               Why Choose Us
             </span>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight">
               Built for Farmers, <span className="text-[#236da9]">Trusted by Thousands</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium">
@@ -183,9 +183,9 @@ export default function Home() {
           </div>
 
           {/* Stats Banner */}
-          <div className="bg-[#236da9] rounded-[2.5rem] p-10 sm:p-16 shadow-2xl relative overflow-hidden group">
+          <div className="bg-[#236da9] rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden group">
             <div className="absolute inset-0 bg-blue-400 opacity-0 group-hover:opacity-5 transition-opacity"></div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 relative z-10">
               {[
                 { label: "Machines Sold", val: "10,000+", icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg> },
                 { label: "Dealer Partners", val: "500+", icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg> },
@@ -196,7 +196,7 @@ export default function Home() {
                   <div className="bg-white/10 p-3 rounded-full mb-6 group-hover/stat:bg-white/20 transition-colors">
                     {stat.icon}
                   </div>
-                  <span className="text-4xl sm:text-5xl font-black text-white mb-2 block tracking-tight">
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 block tracking-tight">
                     {stat.val}
                   </span>
                   <span className="text-blue-100 font-bold uppercase text-xs tracking-[0.2em]">
@@ -226,7 +226,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-5xl sm:text-7xl font-black text-white leading-none tracking-tight">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-none tracking-tight">
                 Power Weeder<br />
                 <span className="text-[#FFC107]">Pro 200</span>
               </h2>
@@ -244,7 +244,7 @@ export default function Home() {
               <div className="flex flex-col">
                 <span className="text-blue-200 text-sm font-bold uppercase tracking-wider mb-1">Starting from</span>
                 <div className="flex items-baseline gap-3">
-                  <span className="text-4xl sm:text-5xl font-black text-white">₹31,000</span>
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">₹31,000</span>
                   <span className="text-white/40 text-lg line-through font-bold">₹68,000</span>
                 </div>
               </div>
@@ -275,7 +275,7 @@ export default function Home() {
       {/* Our Brand Range Section */}
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1700px] mx-auto text-center">
-          <h2 className="text-4xl font-black text-gray-900 mb-12">Our Brand Range</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-8 sm:mb-12">Our Brand Range</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 border border-gray-100 rounded-2xl overflow-hidden mb-20 shadow-sm">
             <div className="py-12 border-b md:border-b-0 md:border-r border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors">
@@ -486,29 +486,24 @@ export default function Home() {
         </div>
       </section>
       {/* Dealer CTA Section */}
-      <section className="py-24 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1700px] mx-auto mb-20 overflow-hidden group">
-          <div className="relative aspect-[21/6] overflow-hidden shadow-2xl">
+      <section className="py-12 sm:py-24 bg-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1700px] mx-auto mb-10 sm:mb-20 overflow-hidden group">
+          <div className="relative aspect-[4/2] sm:aspect-[16/5] md:aspect-[21/6] overflow-hidden shadow-2xl rounded-2xl">
             <Image
               src="/dealership.webp"
               alt="Become a Dealer"
               fill
               className="object-cover"
             />
-            {/* Overlay for Text Legibility */}
-            {/* <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent"></div> */}
-
-            {/* Banner Text Layout */}
-
           </div>
         </div>
 
         {/* Center CTA Text */}
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             Want to Grow Your <span className="text-[#236da9]">Farming Business?</span>
           </h2>
-          <p className="text-gray-500 text-xl font-medium max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg sm:text-xl font-medium max-w-2xl mx-auto">
             Join our dealer network or request a callback to get started with Mechnova.
           </p>
           <div className="pt-2">
@@ -524,17 +519,17 @@ export default function Home() {
       <FAQ />
 
       {/* Trusted Marketplaces Section */}
-      <section className="py-20 bg-gray-50/100 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1700px] mx-auto text-center mb-16">
-          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
+      <section className="py-12 sm:py-20 bg-gray-50/100 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1700px] mx-auto text-center mb-10 sm:mb-16">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             Available Across Trusted Marketplaces
           </h2>
-          <p className="text-gray-500 text-lg font-medium">
+          <p className="text-gray-500 text-base sm:text-lg font-medium">
             Find Mechnova products at India's trusted online marketplaces
           </p>
         </div>
 
-        <div className="max-w-[1700px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="max-w-[1700px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {[
             { name: "amazon", logo: "/amazon.png" },
             { name: "Flipkart", logo: "/flipkart.png" },

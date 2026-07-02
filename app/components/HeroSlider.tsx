@@ -20,8 +20,8 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-      <div className="relative overflow-hidden rounded-[1rem] bg-gray-100 aspect-[30/9] shadow-lg group">
+    <section className="w-full max-w-[1700px] mx-auto px-3 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+      <div className="relative overflow-hidden rounded-[0.75rem] sm:rounded-[1rem] bg-gray-100 aspect-[4/3] sm:aspect-[16/7] lg:aspect-[30/9] shadow-lg group">
         {/* Images */}
         {images.map((img, index) => (
           <div
